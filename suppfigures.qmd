@@ -1,0 +1,3 @@
+
+![**Histogram**. This is a histogram.](figures/histplot.png){#fig-histplot}
+

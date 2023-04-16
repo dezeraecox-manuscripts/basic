@@ -1,181 +1,145 @@
 ---
-title: "Demo aft format to use as template"
-format:
-  aft-pdf:
-    keep-tex: true  
-  aft-html: default
+title: A very important article.
+runningtitle: Short running title.
+runningauthor: Doe & Doe.
 author:
+  - name: Jane Doe
+    url: https://example.com
+    orcid: 0000-0000-0000-0000
+    affiliations:
+      - id: some-inst
+        name: Institute for Cool Things
+        url: https://example.com
+      - id: some-uni
+        name: University of Awesome Research
+        url: https://example.com
+    email: corresponding email
   - name: John Doe
     affiliations:
-      - name: Dummy org
-        department: Cool Dep
-        address: Somewhere
-        city: Magic city
-        country: best one
-        postal-code: 9999
-      - Demo Journal
-    orcid: 0000-0000-0000-0000
-    email: JD@example.org
-    url: https://example.org/
-  - name: his friend
-    affiliations:
-      - Another Affiliation
+      - ref: some-inst
 abstract: |
-  This document is only a demo explaining how to use the template.
-keywords: [template, demo]
-reference-section-title: References
-bibliography: bibliography.bib  
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+bibliography: references.bib
+# Fundamental settings
+license: CC BY
+keywords:
+  - Research
+  - Cool Stuff
+format:
+  basic-pdf
+    # classoption: # To turn on line numbers, uncomment this class option and add a colon to the line above
+    #   - lineno 
+colorlinks: true
+link-citations: true
+keep-tex: true
+mainfont: Calibri
+
 ---
 
-## Introduction {#sec-intro}
+# Introduction
 
-This is a dummy example only for the purpose to use this repo as a template starter for creating new formats.  For this `article-format-template` we call our dummy article `aft`. 
+This template is based on the Overleaf template provided by the Biophysical Journal and uses modifications to this template provided by [Quarto Journals](https://github.com/quarto-journals/biophysical-journal).
 
-This quarto extension format supports PDF and HTML outputs. `quarto-journals` is aiming at porting existing {{< latex >}} template from journals to be used with quarto. PDF format is what require the most work to fit the journals guideline, but Quarto offer a nice rendering for HTML output too. This demo format template only use basic HTML format without any customization for now.
-
-## About Quarto Extensions formats And Quarto Journals Article
-
-First, please get familiar with the following resources: 
-
-- [Creating Formats](https://quarto.org/docs/extensions/formats.html) in Quarto as part of the [Extensions](https://quarto.org/docs/extensions/) mechanism.
-- [Journals Articles](https://quarto.org/docs/journals/) for Quarto.
-
-## Structure of this repository
-
-Everything for the extensions is in `_extensions`. See Quarto doc for details. 
-
-- In `partials`, you'll find the `.tex` partials that can be used and should be removed or tweaked,s
-
-- Your extension can make shortcodes and lua filters available. This document shows the effect of the one provided in the `aft` format. 
-
-- `aft` format sets some defaults which are different from `pdf` or `html`, link setting links to URL in read inside PDF output.
-
-Source repository for this template format can found on [Github](https://github.com/quarto-journals/article-format-template)
+Your introduction goes here.
 
 
-### `_extensions\aft` 
+# Materials and Methods
 
-In this folder you'll find everything that defines the extensions which could be installed using `quarto install extension` or be part of the template when using `quarto use template`
+Your methods go here.
 
-Format Metadata
-  ~ This is in `_extension.yml` is where all the metadata about the format are defined so that Quarto knows what to use.
-  Adapt this file for you own template.
 
-Partials
-  ~ In `partials`, there are the `.tex` files that will be used as Pandoc's template. We provide here all the partials supported by Quarto and custom one for this format. Quarto allows to provide partials to ease the process of tweaking the default latex Pandoc's template and keeping it up to date.  
-    This template repo contains all the relevant partials that you can use with Quarto _as example_. We only tweaked `title.tex` to show the usage of a custom partials called `_custom.tex`.  
-    **Only keep the partials that you need to tweak for the format you are creating**
+# Results
 
-    If you need to completely change the default template (i.g customizing partials is not enough), then you need to provide your own template to Pandoc based on [`template.tex`](https://github.com/quarto-dev/quarto-cli/blob/main/src/resources/formats/pdf/pandoc/template.tex) and also using partials or not. This can be provided using the `template` YAML key in `_extension.yml` for Quarto to use it. 
 
-    This is considered advanced configuration as it will be harder to maintain than only using partials but could be required for some specific format. Be aware that this may lead to loose some Pandoc or Quarto features tied to default `template.tex` content if you remove some specific parts.
+Some examples of commonly used commands and features are listed below, to help you get started.
 
-Lua Filters
-  ~ Most of the time, custom formats will need Lua filters to provide specific features like cross format supports or provides custom shortcodes through the Quarto extension mechanism. Those filters will be available to the user and could be used in the custom formats (according to `_extensions` metadata). 
-    We have provided two examples: 
+Leave a blank line between blocks of text to start a new paragraph.
 
-    - `color-text.lua`, a Lua filter used to add color to inline text for PDF and HTML outputs using the same Markdown syntax
-    - `shorcodes.lua`, a Lua filter which follow [Quarto custom shortcodes](https://quarto.org/docs/authoring/shortcodes.html#custom-shortcodes) guidelines to provide a `{{< LaTeX >}}` shortcode to nicely print LaTeX in PDF and HTML. 
+References can be included between square brackets using the citation keys available in your references.bib, for example we are using quarto [@quarto].
 
-    **Remove or replace with your own Lua filters**
+Figures and Tables can be referenced in line like this @tbl-numbers and @fig-scatter.
 
-Format resources
+Quarto is also great at typesetting mathematics using LaTeX:
 
-  ~ Resources required by the format needs to be available. We have provided two examples: 
+  Let $X_1, X_2, \ldots, X_n$ be a sequence of independent and identically
+  distributed random variables with $\text{E}[X_i] = \mu$ and
+  $\text{Var}[X_i] = \sigma^2 < \infty$, and let
+  $$
+  S_n = \frac{X_1 + X_2 + \cdots + X_n}{n}
+        = \frac{1}{n}\sum_{i}^{n} X_i
+  $${#eq-clt}
+  denote their mean.
+  Then as $n$ approaches infinity, the random variables $\sqrt{n}(S_n - \mu)$ converge
+  in distribution to a normal $\mathcal{N}(0, \sigma^2)$.
+  Thus concludes the explanation about @eq-clt.
 
-    - `te.bst` is a biblio style file for demo. It has been downloaded from https://www.economics.utoronto.ca/osborne/latex/TEBST.HTM (http://econtheory.org/technical/te.bst) - Licence [LPPL](https://www.latex-project.org/lppl/)
-    - `aft.cls` is a dummy class file for this example format. It is a copy of official `article.cls`, the one provided in LaTeX installation (i.e at `kpsewhich article.cls`) and renamed as example (Licence LaTeX Project Public License)
-    - `custom.scss` is a style file to have a custom theme for our HTML format so that our Lua filter feature `color-tex.lua` works.
 
-    Those files are referenced within the `_extension.yml` to be used with our example format.
+# Discussion
 
-    **Remove and replace with your own resources**
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-`.quartoignore`
+# Conclusion
 
-  ~ Sometimes it is useful to have some files only needed for reference or for development. They should be available in the source repository but not downloaded to the user when `quarto use template` is used.
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab
+illo inventore veritatis et quasi architecto beatae vitae dicta sunt
+explicabo.
 
-    **Use `.quartoignore` to register such file and folder (one file or folder per line)**
+# Author Contributions
 
-`style-guide` folder
+Author1 designed the research. Author2 carried out all simulations,
+analyzed the data. Author1 and Author2 wrote the article.
 
-  ~ For `quarto-journals` format, use `style-guide` folder to include any documentation and resourced used for format creation, like a journal style guide or original `.tex` template. This folder is already added in `.quartoignore` in this example repo.
+# Declaration of Interest
 
-    **Remove, rename or add to this folder**
+The authors declare no competing interests.
 
-`template.qmd`
+# Acknowledgments
 
-  ~ This file is the template document that shows how to use the custom format. It will be downloaded with other resource by `quarto use template`, and even offered to be renamed if the name `template.qmd` is used. 
+We thank Dr Smith for their help.
 
-    This file will usually use the custom format (here `aft-pdf` and `aft-html`) and show how to use the template. When you'll copy this template, you should be able to render this document to the demo format. 
+# References
 
-    **Adapt this file to provide a suitable template for your custom format**
+:::{#refs}
+:::
 
-Other files
 
-  ~ Other files are needed by the template and are usually user provided - they are not part of the custom format. 
+## Figures and Tables
 
-    Here `bibliography.bib` is here to demo the usage of the bst file from the custom format.
+Here is a table (or not, this is LaTeX, so it will put it wherever it wants. "Here" is very relative...).
 
-    **Remove this file and provide a suitable one for your template**
+|Thing   | Value  |
+|:-------|-------:|
+|A 42    |      18|
+|B 15    |      18|
+|C 34    |      17|
+|D 99    |      24|
 
-{{< pagebreak >}}
+: This is the table caption. Look, numbers! You can allow this table to be referenced elsewhere in the document by including a tag. {#tbl-numbers}
 
-## Checklist: Creating a custom format
+Similarly, you can find @fig-scatter below.
 
-Here is the checklist to help you know what to modify:
+![**Scatterplot**. This is a scatter with regression line.](figures/scatter.png){#fig-scatter}
 
-- Read the resources mentioned at the top,
-- Use this template repo to create a new repository for your format (Click on "Use this template" to create new github repo)
-- Once you are acquainted with the content, remove the resources that are there only as example (see above)
-- Update README by replacing `aft` and `Article Format Template` mentions for your journal format
-- Keep only the template partials that you need to tweak, and add custom ones if needed
-- Add any Lua filters for shortcodes and other that would be useful to create the expected output format
-- Add any external resource your format will need, and that should be part of the extension format that will be downloaded,
-- Check `_extension.yml` is updated correctly
-- Modify the skeleton `template.qmd` to your format and add any required resources to be downloaded to user.
-- Check `.quartoignore` is updated which everything that should not be downloaded.
-- Publish a demo of you format to github pages of the repo by using `quarto publish` command 
+You may prefer to include tables and figures directly in the relevant results sections - this is fine! The syntax is the same, and the labels will be updated automatically. 
 
-## Demo of some features found in this demo journal template
+You can add a page break directly using:
 
-### Shortcode demo {#sec-shortcode}
+\NewPage
 
-PDF are rendered using {{< latex >}} but it is best if one can use a Markdown syntax for cross format support.
+# Supplementary Material
 
-`{{< latex >}}` used in source is a shortcode syntax where the shortcode is included in the extension folder `_extensions`
+I like to store supplementary figures in a separate file, such that the standalone PDF containing the supplementary info can be independently created. However, to make the supplementary figures referenceable here we need to include them!
 
-### Code chunk {#sec-chunks}
+First, we reset the figure and table counter using the following command:
 
-This format hide chunks by default as option has been set in `_extension.yml` file.
+\beginsupplement
 
-```{r}
-#| prompt: true
-# Loading some data but this chunk won't be shown.
-data("quine", package = "MASS")
-```
+Then, add the supplementary figures.
 
-But you can set `echo` option to `true` locally in the chunk
+{{< include suppfigures.qmd >}}
 
-```{r}
-#| echo: true
-m_pois <- glm(Days ~ (Eth + Sex + Age + Lrn)^2, data = quine, family = poisson)
-summary(m_pois)
-```
+Now, we can reference figures from the supplementary as if they were included in this file! Here is a reference to Supplementary @fig-histplot.
 
-### Text color {#sec-summary}
 
-Our format makes applying color on inline text possible using the `[content]{color=<name>}` syntax. Let's see an example.
 
-Here we are using a special feature of our format which is the coloring because [pink is a **nice** color]{color=mypink}.
-
-This is possible thanks to the Lua Filter included in the custom extension format.
-
-### Using references {.unnumbered}
-
-I did not read this book [@CameronTrivedi2013] but it must be interesting. 
-
-Differences between `aft-html` and `aft-pdf`: 
-
-* For the HTML format, we are using Pandoc citeproc to include the bibliography. Here `reference-section-title` controls the title for the chapter that will be used.
-* For the PDF format, `natbib` is used by default and the bibliography is included with a title by the LaTeX template. 
