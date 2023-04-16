@@ -4,13 +4,13 @@ This is a Quarto template that assists you in creating a manuscript for Article 
 
 ## Creating a New Article
 
-You can use this as a template to create an article for an AFT journal. To do this, use the following command:
+You can use this as a template to create a basic scientific article. To do this, use the following command:
 
 ```bash
 quarto use template dezeraecox-manuscripts/basic
 ```
 
-This will install the extension and create an example qmd file and bibiography that you can use as a starting place for your article.
+This will install the extension and create an example qmd file (```template.qmd```) and bibiography that you can use as a starting place for your article. For more guidance on customising these files, find the Quarto documentation [here](https://quarto.org/docs/authoring/footnotes-and-citations.html).
 
 ## Installation For Existing Document
 
@@ -43,7 +43,7 @@ format:
 
 ## Example
 
-Here is the source code for a minimal sample document: [manuscript.qmd](manuscript.qmd).
+Here is the source code for a minimal sample document: [template.qmd](template.qmd).
 
 ## Acknowledgements
 
